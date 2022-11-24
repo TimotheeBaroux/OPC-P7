@@ -7,3 +7,4 @@ plotly==5.11.0
 shap==0.41.0
 imbalanced-learn==0.9.1
 matplotlib==3.3.2
+lime==0.2.0.1
