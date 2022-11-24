@@ -6,4 +6,4 @@ scikit-learn==1.1.2
 plotly==5.11.0
 shap==0.41.0
 imbalanced-learn==0.9.1
-matplitlib==3.3.2
+matplotlib==3.3.2
