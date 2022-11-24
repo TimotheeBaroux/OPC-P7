@@ -38,7 +38,7 @@ line = X_tract.loc[option]
 
 variable = st.selectbox(
     'Variable',
-    data.columns.drop(['TARGET']))
+    data.columns)
 
 fig, ax = plt.subplots()
 ax.hist(X_tract[variable], edgecolor='black', linewidth=0.7)  #, bins=20
