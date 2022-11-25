@@ -66,6 +66,15 @@ else :
 #shap_val = requests.post("http://127.0.0.1:12345/SHAP",json = query)
 #st.write(ast.literal_eval((ast.literal_eval(shap_val.text)["shap"]).replace('. ' , ',').replace('.\n' , ',')))
 
-pipe = joblib.load("pipeline_final.pkl")
-explainer = shap.Explainer(pipe.predict,pd.DataFrame(line))
-shap_values = explainer(pd.DataFrame(line))
+X_ltrain = pd.read_csv("X_ltrain.csv")
+y_ltrain = pd.read_csv("y_ltrain.csv")
+
+def probas(data):
+    proba_temp = requests.post("http://127.0.0.1:12345/proba_lime",json = pd.DataFrame(data).to_dict("records"))
+    #st.write(np.array(ast.literal_eval((ast.literal_eval(proba_temp.text)["proba_lime"]).replace('\n ' , ',').replace(' ' , ','))))
+    return np.array(ast.literal_eval((ast.literal_eval(proba_temp.text)["proba_lime"]).replace('\n ' , ',').replace(' ' , ',')))
+
+explainer = lime.lime_tabular.LimeTabularExplainer(np.array(X_ltrain),training_labels=np.array(y_ltrain),
+                                                   feature_names=list(X_ltrain.columns))
+exp = explainer.explain_instance(line.values, probas, num_features=5)
+st.write(exp.as_pyplot_figure(label=1))

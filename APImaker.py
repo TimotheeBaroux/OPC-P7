@@ -7,6 +7,8 @@ import traceback
 import pandas as pd
 import numpy as np
 import shap
+import sys
+np.set_printoptions(threshold=sys.maxsize)
 
 application = Flask(__name__)
 
@@ -36,13 +38,13 @@ def proba():
         print ("Model not good")
         return ("Model is not good")
 
-@application.route("/prob", methods=["POST"])    
-def prob():
+@application.route("/proba_lime", methods=["POST"])    
+def proba_lime():
     if lr:
         try:
             json_ = request.json
             query = pd.DataFrame(json_)
-            return jsonify({"prob": str(lr.predict_proba(query)[0,1])})
+            return jsonify({"proba_lime": str(lr.predict_proba(query))})
         except:
             return jsonify({"trace": traceback.format_exc()})
     else:
