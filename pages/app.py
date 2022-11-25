@@ -38,9 +38,10 @@ query = [dict(line)]    #[ast.literal_eval(line)]
 #st.write(query)
 
 prediction = requests.post("http://127.0.0.1:12345/prediction",json = query)
-proba = requests.post("http://127.0.0.1:12345/proba",json = query)
 
 st.write(prediction.text)
+
+proba = requests.post("http://127.0.0.1:12345/proba",json = query)
 
 if ast.literal_eval(ast.literal_eval(prediction.text)["prediction"])[0]:
     st.write("Malheureusement, vous n'êtes pas prêt")
