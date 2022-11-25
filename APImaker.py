@@ -7,8 +7,8 @@ import traceback
 import pandas as pd
 import numpy as np
 import shap
-import sys
-np.set_printoptions(threshold=sys.maxsize)
+#import sys
+#np.set_printoptions(threshold=sys.maxsize)
 
 application = Flask(__name__)
 
