@@ -14,8 +14,8 @@ import shap
 import pickle
 import lime
 
-st.markdown("# Application")
-st.sidebar.markdown("# Application")
+st.markdown("# Estimation du risque de défaut de crédit")
+st.sidebar.markdown("# Estimateur")
 
 st.write("""
 Bienvenue !

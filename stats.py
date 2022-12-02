@@ -12,8 +12,9 @@ import plotly.graph_objects as go
 import shap
 import matplotlib.pyplot as plt
 
-st.markdown("# Main page")
-st.sidebar.markdown("# Main page")
+st.markdown("# Bienvenue dans votre application de scoring")
+st.markdown("## Nous allons commencer avec quelques statistiques pour votre client.")
+st.sidebar.markdown("# Statistiques client")
 
 @st.cache
 def load_data():
