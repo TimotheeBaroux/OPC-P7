@@ -47,4 +47,5 @@ ax.hist(X_tract[variable], edgecolor='black', linewidth=0.7, align='mid')  #, bi
 plt.axvline(x=line[variable], color='red', label='Client', ymax=0.95)
 st.pyplot(fig)
 
+st.write("The variable {} refers to :".format(variable))
 st.write(descr[descr["Row"]==variable]["Description"].iloc[0])
