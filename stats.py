@@ -51,7 +51,7 @@ listres = []
 for name in descr["Row"]:
     if name in variable:
         listres += [name]
-var_ext = list(set(listres))[-1]
+var_ext = listres[-1]
 
 st.write("The variable {} refers to :".format(var_ext))
 st.write(descr[descr["Row"]==var_ext]["Description"].iloc[0])
