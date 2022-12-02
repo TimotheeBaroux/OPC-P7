@@ -22,6 +22,8 @@ def load_data():
 
 data = load_data()
 
+descr = pd.read_csv("HomeCredit_columns_description.csv")
+
 st.write("""
 Quelques Statistiques sur l'ensemble des clients
 """)
@@ -44,3 +46,5 @@ fig, ax = plt.subplots()
 ax.hist(X_tract[variable], edgecolor='black', linewidth=0.7)  #, bins=20
 plt.axvline(x=line[variable], color='red', label='Client', ymax=0.95)
 st.pyplot(fig)
+
+st.write(descr[descr["Row"]==variable]["Description"][0])
