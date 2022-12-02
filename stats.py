@@ -48,7 +48,7 @@ plt.axvline(x=line[variable], color='red', label='Client', ymax=0.95)
 st.pyplot(fig)
 
 listres = []
-for name in HomeCredit_columns_description["Row"]:
+for name in descr["Row"]:
     if name in variable:
         listres += [name]
 var_ext = list(set(listres))[-1]
