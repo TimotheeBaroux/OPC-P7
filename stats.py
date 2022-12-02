@@ -47,4 +47,4 @@ ax.hist(X_tract[variable], edgecolor='black', linewidth=0.7)  #, bins=20
 plt.axvline(x=line[variable], color='red', label='Client', ymax=0.95)
 st.pyplot(fig)
 
-st.write(descr[descr["Row"]==variable]["Description"][0])
+st.write(descr[descr["Row"]==variable]["Description"].iloc[0])
