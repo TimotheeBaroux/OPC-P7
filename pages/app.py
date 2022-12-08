@@ -17,10 +17,8 @@ import lime
 st.markdown("# Estimation du risque de défaut de crédit")
 st.sidebar.markdown("# Estimateur")
 
-st.write("""
-Bienvenue !
-Nous allons voir si vous êtes prêt pour un prêt !
-""")
+st.write("### Bienvenue !")
+st.write("### Nous allons voir si vous êtes prêt pour un prêt !")
 
 X_tract = pd.read_csv("X_tract.csv")
 idx = X_tract.index
@@ -64,7 +62,7 @@ else :
                 }))
     st.write(fig)
     
-st.write("Impact des variables les plus importantes :")
+st.write("### Impact des variables les plus importantes :")
 
 #shap_val = requests.post("http://127.0.0.1:12345/SHAP",json = query)
 #st.write(ast.literal_eval((ast.literal_eval(shap_val.text)["shap"]).replace('. ' , ',').replace('.\n' , ',')))

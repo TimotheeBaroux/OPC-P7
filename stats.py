@@ -43,9 +43,15 @@ variable = st.selectbox(
     'Variable',
     data.columns)
 
+
+#ax.hist(X_tract[variable], edgecolor='black', linewidth=0.7, align='mid')  #, bins=20
+#plt.axvline(x=line[variable], color='red', label='Client', ymax=0.95)
+
 fig, ax = plt.subplots()
-ax.hist(X_tract[variable], edgecolor='black', linewidth=0.7, align='mid')  #, bins=20
+n, bins, patches = plt.hist(X_tract[variable], edgecolor='black', linewidth=0.7, align='mid')  
 plt.axvline(x=line[variable], color='red', label='Client', ymax=0.95)
+ticks = [(patch._x0 + patch._x1)/2 for patch in patches]
+plt.xticks(ticks, rotation = -90)
 st.pyplot(fig)
 
 listres = []
