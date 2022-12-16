@@ -50,8 +50,8 @@ variable = st.selectbox(
 fig, ax = plt.subplots()
 n, bins, patches = plt.hist(X_tract[variable], edgecolor='black', linewidth=0.7, align='mid')  
 plt.axvline(x=line[variable], color='red', label='Client', ymax=0.95)
-ticks = [(patch._x0 + patch._x1)/2 for patch in patches]
-plt.xticks(ticks, rotation = -90)
+#ticks = [(patch._x0 + patch._x1)/2 for patch in patches]
+#plt.xticks(ticks, rotation = -90)
 st.pyplot(fig)
 
 listres = []
