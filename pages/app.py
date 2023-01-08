@@ -47,7 +47,7 @@ if ast.literal_eval(ast.literal_eval(prediction.text)["prediction"])[0]:
         value = float(ast.literal_eval(proba.text)["proba"]),
         domain = {'x': [0, 1], 'y': [0, 1]},
         title = {'text': "Probabilité de non-remboursement"}, 
-        gauge = {'axis': {'range': [None, 1]},'bar': {'color': "red"}
+        gauge = {'axis': {'range': [None, 1]},'bar': {'color': "black"}
                 }))
     st.write(fig)
 else :
@@ -58,7 +58,7 @@ else :
         value = float(ast.literal_eval(proba.text)["proba"]),
         domain = {'x': [0, 1], 'y': [0, 1]},
         title = {'text': "Probabilité de non-remboursement"}, 
-        gauge = {'axis': {'range': [None, 1]},'bar': {'color': "green"}
+        gauge = {'axis': {'range': [None, 1]},'bar': {'color': "blue"}
                 }))
     st.write(fig)
     
@@ -79,3 +79,4 @@ explainer = lime.lime_tabular.LimeTabularExplainer(np.array(X_ltrain),training_l
                                                    feature_names=list(X_ltrain.columns))
 exp = explainer.explain_instance(line.values, probas, num_features=5)
 st.write(exp.as_pyplot_figure(label=1))
+st.write("_Attention : dans ce graphique, les barres vertes, qui correspondent à une augmentation du résultat, sont un élément négatif : elle correspondent à une augmentation de la probabilité que le client ait des problèmes pour rembourser son prêt_")
