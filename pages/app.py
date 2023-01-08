@@ -62,7 +62,7 @@ else :
                 }))
     st.write(fig)
     
-st.write("### Impact des variables les plus importantes :")
+st.write("### Impact des variables les plus importantes sur la probabilité de non-remboursement :")
 
 #shap_val = requests.post("http://127.0.0.1:12345/SHAP",json = query)
 #st.write(ast.literal_eval((ast.literal_eval(shap_val.text)["shap"]).replace('. ' , ',').replace('.\n' , ',')))
@@ -75,9 +75,8 @@ def probas(data):
     #st.write(np.array(ast.literal_eval((ast.literal_eval(proba_temp.text)["proba_lime"]).replace('\n ' , ',').replace(' ' , ','))))
     return np.array(ast.literal_eval((ast.literal_eval(proba_temp.text)["proba_lime"]).replace('\n ' , ',').replace(' ' , ',')))
 
-st.write("Mesure de l'impact des variables les plus influentes sur la probabilité de non-remboursement :")
 explainer = lime.lime_tabular.LimeTabularExplainer(np.array(X_ltrain),training_labels=np.array(y_ltrain),
                                                    feature_names=list(X_ltrain.columns))
 exp = explainer.explain_instance(line.values, probas, num_features=5)
 st.write(exp.as_pyplot_figure(label=1))
-st.write("_Attention : dans ce graphique, les barres vertes, qui correspondent à une augmentation du résultat, sont un élément négatif : elle correspondent à une augmentation de la probabilité que le client ait des problèmes pour rembourser son prêt_")
+st.write("_Attention : dans ce graphique, les barres vertes, qui correspondent à une augmentation du résultat, sont un élément négatif : elle correspondent à une augmentation de la probabilité que le client ait des problèmes pour rembourser son prêt._")
