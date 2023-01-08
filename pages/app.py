@@ -75,6 +75,7 @@ def probas(data):
     #st.write(np.array(ast.literal_eval((ast.literal_eval(proba_temp.text)["proba_lime"]).replace('\n ' , ',').replace(' ' , ','))))
     return np.array(ast.literal_eval((ast.literal_eval(proba_temp.text)["proba_lime"]).replace('\n ' , ',').replace(' ' , ',')))
 
+st.write("Mesure de l'impact des variables les plus influentes sur la probabilité de non-remboursement :")
 explainer = lime.lime_tabular.LimeTabularExplainer(np.array(X_ltrain),training_labels=np.array(y_ltrain),
                                                    feature_names=list(X_ltrain.columns))
 exp = explainer.explain_instance(line.values, probas, num_features=5)
